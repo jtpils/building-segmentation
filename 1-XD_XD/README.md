@@ -1,6 +1,26 @@
-**Marathon Match - Solution Description**
+# XDXD Building Segmentation Model
 
-**Overview**
+# Quick Start
+Create a Google Cloud (or AWS) GPU instance
+```sh
+
+```
+
+Install the AWS command line tools 
+```sh
+apt install python-pip
+pip install awscli --upgrade --user
+aws configure
+```
+
+Download the required data files
+```sh
+source data.sh
+```
+
+Train and test using the commands in commands.sh
+
+# Overview
 
 ![Figure1](images/Figure1ModelExample.jpg)
 **Figure1** : Best individual model with using OpenStreetMap and Pan-sharpened Multispectral data.
