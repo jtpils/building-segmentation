@@ -3,8 +3,21 @@
 # Quick Start
 Create a Google Cloud (or AWS) GPU instance
 ```sh
-
+gcloud beta compute instances create gpu-docker-host --machine-type n1-standard-2 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=1 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 200GB --maintenance-policy TERMINATE --restart-on-failure 
 ```
+
+Install nvidia-docker
+```sh
+# https://medium.com/google-cloud/containerized-jupyter-notebooks-on-gpu-on-google-cloud-8e86ef7f31e9
+gcloud compute ssh gpu-docker-host --zone us-east1-d
+
+curl -O -s https://gist.githubusercontent.com/durgeshm/b149e7baec4d4508eb4b2914d63018c7/raw/798aadbb54b451abcaba9bfeb833327fa4b3d53b/deps_nvidia_docker.sh
+
+sudo sh deps_nvidia_docker.sh
+
+sudo nvidia-docker run --rm nvidia/cuda nvidia-smi
+```
+
 
 Install the AWS command line tools 
 ```sh
@@ -13,12 +26,12 @@ pip install awscli --upgrade --user
 aws configure
 ```
 
-Download the required data files
+Download the required data files with `data.sh`
 ```sh
 source data.sh
 ```
 
-Train and test using the commands in commands.sh
+Train and test using the commands in `commands.sh`
 
 # Overview
 
