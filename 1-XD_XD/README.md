@@ -15,6 +15,11 @@ curl -O -s https://gist.githubusercontent.com/durgeshm/b149e7baec4d4508eb4b2914d
 
 sudo sh deps_nvidia_docker.sh
 
+# If you see modprob errors
+sudo apt install nvidia-modprobe
+sudo apt-get install -y nvidia-367
+sudo systemctl restart nvidia-docker
+
 sudo nvidia-docker run --rm nvidia/cuda nvidia-smi
 ```
 
