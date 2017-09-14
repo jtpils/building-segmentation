@@ -3,7 +3,7 @@
 # Quick Start
 Create a Google Cloud (or AWS) GPU instance
 ```sh
-gcloud beta compute instances create gpu-docker-host --machine-type n1-standard-2 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=1 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 200GB --maintenance-policy TERMINATE --restart-on-failure 
+gcloud beta compute instances create gpu-docker-host --machine-type n1-standard-8 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=1 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 400GB --maintenance-policy TERMINATE --restart-on-failure 
 ```
 
 Install nvidia-docker
