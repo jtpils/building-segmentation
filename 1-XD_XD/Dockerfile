@@ -1,5 +1,5 @@
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
-MAINTAINER kohei
+MAINTAINER maxkferg
 
 # Install dependent packages via apt-get
 RUN apt-get -y update &&\
@@ -73,8 +73,8 @@ RUN unzip /root/osmdata/las-vegas_nevada.imposm-shapefiles.zip \
         -d /root/osmdata/shanghai_china_osm/ &&\
     unzip /root/osmdata/paris_france.imposm-shapefiles.zip \
         -d /root/osmdata/paris_france_osm/ &&\
-    unzip /root/osmdata/ex_s2cCo6gpCXAvihWVygCAfSjNVksnQ.imposm-shapefiles.zip \
-        -d /root/osmdata/ex_s2cCo6gpCXAvihWVygCAfSjNVksnQ_osm/
+    unzip /root/osmdata/khartoum.imposm-shapefiles.zip \
+        -d /root/osmdata/khartoum_sudan_osm/
 
 # Copy and unzip visualizer
 COPY code/visualizer-2.0.zip /root/

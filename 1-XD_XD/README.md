@@ -3,7 +3,7 @@
 # Quick Start
 Create a Google Cloud (or AWS) GPU instance
 ```sh
-gcloud beta compute instances create gpu-docker-host --machine-type n1-standard-8 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=1 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 400GB --maintenance-policy TERMINATE --restart-on-failure 
+gcloud beta compute instances create building-segmentation --machine-type n1-highmem-16 --zone us-east1-d --accelerator type=nvidia-tesla-k80,count=2 --image-family ubuntu-1604-lts --image-project ubuntu-os-cloud --boot-disk-size 400GB --maintenance-policy TERMINATE --restart-on-failure
 ```
 
 Install nvidia-docker
@@ -14,6 +14,11 @@ gcloud compute ssh gpu-docker-host --zone us-east1-d
 curl -O -s https://gist.githubusercontent.com/durgeshm/b149e7baec4d4508eb4b2914d63018c7/raw/798aadbb54b451abcaba9bfeb833327fa4b3d53b/deps_nvidia_docker.sh
 
 sudo sh deps_nvidia_docker.sh
+
+# If you see modprob errors
+sudo apt install nvidia-modprobe
+sudo apt-get install -y nvidia-367
+sudo systemctl restart nvidia-docker
 
 sudo nvidia-docker run --rm nvidia/cuda nvidia-smi
 ```
