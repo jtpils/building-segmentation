@@ -1,14 +1,22 @@
 
 
 # Build the docker containter
-sudo docker build -t building-segmetation .
+sudo docker build -t building-segmentation .
 
-# Start the container
+# Start a bash session in the container
 sudo nvidia-docker run \
     --name building-segmentation \
     -v /data:/data \
     -ti building-segmentation \
     bash
+
+# Start the training process
+sudo nvidia-docker run \
+    --name building-segmentation \
+    -v /data:/data \
+    building-segmentation \
+    bash ./train.sh /data/train/AOI_3_Paris_Train
+
 
 # Start the training process
 ./train.sh \
