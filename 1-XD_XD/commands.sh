@@ -10,20 +10,19 @@ sudo nvidia-docker run \
     -ti building-segmentation \
     bash
 
-# Start the training process
+# Run the training process for Paris
 sudo nvidia-docker run \
     --name building-segmentation \
     -v /data:/data \
     building-segmentation \
     bash ./train.sh /data/train/AOI_3_Paris_Train
-
-
-# Start the training process
-./train.sh \
-    /data/train/AOI_2_Vegas_Train \
-    /data/train/AOI_3_Paris_Train \
-    /data/train/AOI_4_Shanghai_Train \
-    /data/train/AOI_5_Khartoum_Train
+    
+# Run the testing process for Paris
+sudo nvidia-docker run \
+    --name building-segmentation \
+    -v /data:/data \
+    -ti building-segmentation \
+    bash ./test.sh /data/train/AOI_3_Paris_Train paris.csv
 
 
 # Monitor memory
